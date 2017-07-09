@@ -6,16 +6,16 @@ package com.my.project.designmodel.proxy;
  * @create 2017-06-29 15:51
  **/
 public class HelloStaticProxy implements HelloInterface {
-    private HelloImpl helloImpl;
+    private HelloInterface hello;
 
     public HelloStaticProxy() {
-        this.helloImpl = new HelloImpl();
+        this.hello = new HelloImpl();
     }
 
 
     @Override
     public void say(String name) {
-        helloImpl.say(name);
+        hello.say(name);
     }
 
 
