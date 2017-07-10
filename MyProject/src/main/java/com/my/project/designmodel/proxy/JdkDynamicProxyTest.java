@@ -11,5 +11,6 @@ public class JdkDynamicProxyTest {
     public static void main(String[] args) {
         HelloInterface proxy = new JdkDynamicProxy(new HelloImpl()).getProxy();
         proxy.say("jdk dynamic proxy 晓风");
+        proxy.say("jdk dynamic proxy 晓风");
     }
 }
