@@ -2,43 +2,41 @@ package com.my.project.designmodel.proxy;
 
 
 
-
-import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import net.sf.cglib.proxy.MethodProxy;
-
+import org.springframework.cglib.proxy.MethodInterceptor;
 
 import java.lang.reflect.Method;
+
 
 /**
  * @author tangfeng
  * @Description Cglib 实现动态代理
  * @create 2017-07-10 10:40
  **/
-public class CglibDynamicProxy implements MethodInterceptor {
+public class CglibSpringDynamicProxy implements MethodInterceptor {
 
-    private static CglibDynamicProxy cglibProxyInstance = new CglibDynamicProxy();
-
-    public CglibDynamicProxy() {
-        super();
+    private static CglibSpringDynamicProxy cglibProxyInstance = new CglibSpringDynamicProxy();
+    public CglibSpringDynamicProxy() {
     }
 
-    public static CglibDynamicProxy getInstance(){
+    public static CglibSpringDynamicProxy getInstance(){
         return cglibProxyInstance;
     }
+
     public <T> T getProxy(Class<T> clazz){
-        return (T) Enhancer.create(clazz,this);
+        return (T)org.springframework.cglib.proxy.Enhancer.create(clazz,this);
     }
     @Override
-    public Object intercept(Object target, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+    public Object intercept(Object o, Method method, Object[] objects, org.springframework.cglib.proxy.MethodProxy methodProxy) throws Throwable {
 
         before();
-        Object result = methodProxy.invokeSuper(target, args);
+        Object result = methodProxy.invokeSuper(o, objects);
         after();
 
         return result;
     }
+
+
 
 
     private void before(){
@@ -78,9 +76,9 @@ public class CglibDynamicProxy implements MethodInterceptor {
         @Override
         public Object intercept(Object o, Method method, Object[] objects, org.springframework.cglib.proxy.MethodProxy methodProxy) throws Throwable {
 
-            CglibDynamicProxy.getInstance().before();
+            CglibSpringDynamicProxy.getInstance().before();
             Object result = methodProxy.invokeSuper(o, objects);
-            CglibDynamicProxy.getInstance().after();
+            CglibSpringDynamicProxy.getInstance().after();
 
             return result;
         }
