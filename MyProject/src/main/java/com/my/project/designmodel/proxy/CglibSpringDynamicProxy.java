@@ -2,8 +2,13 @@ package com.my.project.designmodel.proxy;
 
 
 
+
+
+
 import org.aopalliance.intercept.MethodInvocation;
+import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
+import org.springframework.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
@@ -16,18 +21,17 @@ import java.lang.reflect.Method;
 public class CglibSpringDynamicProxy implements MethodInterceptor {
 
     private static CglibSpringDynamicProxy cglibProxyInstance = new CglibSpringDynamicProxy();
-    public CglibSpringDynamicProxy() {
-    }
+
 
     public static CglibSpringDynamicProxy getInstance(){
         return cglibProxyInstance;
     }
 
     public <T> T getProxy(Class<T> clazz){
-        return (T)org.springframework.cglib.proxy.Enhancer.create(clazz,this);
+        return (T) Enhancer.create(clazz,this);
     }
     @Override
-    public Object intercept(Object o, Method method, Object[] objects, org.springframework.cglib.proxy.MethodProxy methodProxy) throws Throwable {
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
 
         before();
         Object result = methodProxy.invokeSuper(o, objects);
@@ -45,11 +49,6 @@ public class CglibSpringDynamicProxy implements MethodInterceptor {
     private void after(){
         System.out.println("=========== after==========");
     }
-
-
-
-
-
 
 
 

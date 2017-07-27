@@ -1,5 +1,7 @@
 package com.my.project.designmodel.proxy;
 
+import org.springframework.aop.framework.ProxyFactory;
+
 /**
  * @author tangfeng
  * @Description
@@ -7,15 +9,24 @@ package com.my.project.designmodel.proxy;
  **/
 public class CglibDynamicProxyTest {
     public static void main(String[] args) {
-        HelloInterface hello = CglibDynamicProxy.getInstance().getProxy(HelloImpl.class);
-        hello.say("cglib dynamic proxy 晓风");
+        HelloInterface proxy1 = CglibDynamicProxy.getInstance().getProxy(HelloImpl.class);
+        proxy1.say("cglib dynamic proxy 晓风");
 
-        /*CglibDynamicProxy.SpringCglibProxy springCglibProxy = CglibDynamicProxy.SpringCglibProxy.getInstance();
-        HelloInterface proxy = springCglibProxy.getProxy(HelloImpl.class);
-        proxy.say("spring cglib dynamic proxy 晓风");*/
 
-        CglibSpringDynamicProxy springCglibProxy = CglibSpringDynamicProxy.getInstance();
-        HelloInterface proxy = springCglibProxy.getProxy(HelloImpl.class);
-        proxy.say("spring cglib dynamic proxy 晓风");
+
+        HelloLogic proxy = CglibSpringDynamicProxy.getInstance().getProxy(HelloLogic.class);
+        proxy.say("spring cglib dynamic proxy class 晓风");
+
+        /*spring cglib 不能代理实现接口的类？ 如下执行会报错*/
+        /*HelloImpl proxy2 = CglibSpringDynamicProxy.getInstance().getProxy(HelloImpl.class);
+        proxy2.say("spring cglib dynamic proxy class impl interface 晓风");*/
+
+        ProxyFactory pf = new ProxyFactory();
+        pf.setTarget(HelloImpl.class);
+
+        Object proxy3 = pf.getProxy();
+        //HelloImpl proxy3 = (HelloImpl)pf.getProxy(HelloImpl.class.getClassLoader());
+        //proxy3.say("spring proxyFactory dynamic proxy class impl interface 晓风");
+        System.out.println("");
     }
 }
