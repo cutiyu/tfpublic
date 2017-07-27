@@ -21,12 +21,5 @@ public class CglibDynamicProxyTest {
         /*HelloImpl proxy2 = CglibSpringDynamicProxy.getInstance().getProxy(HelloImpl.class);
         proxy2.say("spring cglib dynamic proxy class impl interface 晓风");*/
 
-        ProxyFactory pf = new ProxyFactory();
-        pf.setTarget(HelloImpl.class);
-
-        Object proxy3 = pf.getProxy();
-        //HelloImpl proxy3 = (HelloImpl)pf.getProxy(HelloImpl.class.getClassLoader());
-        //proxy3.say("spring proxyFactory dynamic proxy class impl interface 晓风");
-        System.out.println("");
     }
 }
