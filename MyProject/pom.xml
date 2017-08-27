@@ -41,4 +41,18 @@
   <build>
     <finalName>MyProject</finalName>
   </build>
+
+
+  <distributionManagement>
+    <repository>
+      <id>central</id>
+      <name>LAPTOP-08OOJE7Q-releases</name>
+      <url>http://localhost:8081/artifactory/jfrogRepository</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>LAPTOP-08OOJE7Q-snapshots</name>
+      <url>http://localhost:8081/artifactory/jfrogRepository</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
