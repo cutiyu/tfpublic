@@ -29,6 +29,7 @@ public class InnerClassTest {
         //System.out.println(mail);//不可访问
         //System.out.println(address);//不可访问
         System.out.println(person.address);//可以访问内部类的私有成员
+        System.out.println(person.address);//可以访问内部类的私有成员
         System.out.println(person.mail);//可以访问内部类的公有成员
 
     }
