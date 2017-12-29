@@ -5,7 +5,6 @@ import org.springframework.aop.framework.ProxyFactory;
 /**
  * @author tangfeng
  * @Description
- * @create 2017-07-10 13:59
  **/
 public class CglibDynamicProxyTest {
     public static void main(String[] args) {

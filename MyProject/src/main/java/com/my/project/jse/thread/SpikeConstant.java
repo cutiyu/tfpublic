@@ -65,7 +65,7 @@ public class SpikeConstant {
                     String userId=Thread.currentThread().getId()+String.valueOf(System.currentTimeMillis());
                     System.out.println(SpikeConstant.getInstance().subCount(userId, 1+Integer.valueOf(userId.substring(userId.length()-1))));
                     if(SpikeConstant.SpikeTotle.get()==0){
-                        service.isShutdown();
+                        //service.isShutdown();
                     }
                 }
             });

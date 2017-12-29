@@ -15,7 +15,7 @@ public class StackTest {
         stack.add("555");
         System.out.println(stack.toString()); //[111, 222, 333, 555]
 
-        stack.forEach(a-> System.out.println("遍历元素  "+a));
+        //stack.forEach(a-> System.out.println("遍历元素  "+a));
 
         System.out.println("第一个元素 "+stack.firstElement());
 
@@ -26,7 +26,7 @@ public class StackTest {
         System.out.println("搜索元素 "+stack.search("5555")); //搜索元素
         System.out.println("搜索元素 "+stack.search("222"));
 
-        stack.forEach(a-> System.out.println("遍历元素  "+a));
+        //stack.forEach(a-> System.out.println("遍历元素  "+a));
 
 
 

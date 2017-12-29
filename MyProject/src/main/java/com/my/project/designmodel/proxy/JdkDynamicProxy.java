@@ -7,7 +7,6 @@ import java.lang.reflect.Proxy;
 /**
  * @author tangfeng
  * @Description
- * @create 2017-06-29 16:01
  **/
 public class JdkDynamicProxy implements InvocationHandler{
 

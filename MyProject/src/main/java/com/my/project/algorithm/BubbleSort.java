@@ -15,9 +15,9 @@ public class BubbleSort {
 
     public static void main(String[] args) {
         int[] a = new int[]{3,4,1,12,16,7,21,55,48,32};
-        Arrays.stream(a).forEach(x-> System.out.println(x));
+        //Arrays.stream(a).forEach(x-> System.out.println(x));
         bubbleSort(a);
-        Arrays.stream(a).forEach(x-> System.out.println(x));
+        //Arrays.stream(a).forEach(x-> System.out.println(x));
     }
 
     /**

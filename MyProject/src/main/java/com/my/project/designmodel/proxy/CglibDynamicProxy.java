@@ -1,8 +1,4 @@
 package com.my.project.designmodel.proxy;
-
-
-
-
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
@@ -13,7 +9,6 @@ import java.lang.reflect.Method;
 /**
  * @author tangfeng
  * @Description Cglib 实现动态代理
- * @create 2017-07-10 10:40
  **/
 public class CglibDynamicProxy implements MethodInterceptor {
 
